@@ -65,5 +65,6 @@
     "metro.config.js",
     "jest.config.js"
   ],
-  "typeRoots": ["./src/types"]
+  "typeRoots": ["./src/types"],
+  "types": ["jest", "styled-components-react-native"]
 }
