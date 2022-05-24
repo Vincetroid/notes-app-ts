@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import HomeScreen from '../screens/NotesMainScreen/NotesMainScreen';
 import SettingsScreen from '../screens/SettingsScreen/SettingsScreen';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
@@ -14,7 +14,7 @@ function TabBottomNavigator() {
         component={HomeScreen}
         options={{
           title: 'Notes',
-          tabBarIcon: () => <FontAwesomeIcon icon="note-sticky" />,
+          tabBarIcon: () => <FontAwesomeIcon icon="note-sticky" size={24} />,
         }}
       />
       <Tab.Screen
@@ -22,7 +22,7 @@ function TabBottomNavigator() {
         component={SettingsScreen}
         options={{
           title: 'Settings',
-          tabBarIcon: () => <FontAwesomeIcon icon="gear" />,
+          tabBarIcon: () => <FontAwesomeIcon icon="gear" size={24} />,
         }}
       />
     </Tab.Navigator>

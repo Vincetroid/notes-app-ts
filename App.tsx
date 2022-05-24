@@ -1,4 +1,3 @@
-import './src/firebase/conf';
 import React from 'react';
 import { LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,6 +11,7 @@ import {
   faGear,
   faNoteSticky,
   faCirclePlus,
+  faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 
 LogBox.ignoreAllLogs();
@@ -21,7 +21,7 @@ export default function App() {
   const authUser = useFirebaseAuth(auth);
 
   React.useEffect(() => {
-    library.add(fab, faGear, faNoteSticky, faCirclePlus);
+    library.add(fab, faGear, faNoteSticky, faCirclePlus, faTrash);
   }, []);
 
   return (
