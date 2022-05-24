@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  View,
   Text,
   SafeAreaView,
   TextInput,
@@ -40,6 +39,9 @@ const SignUpScreen = ({ navigation }) => {
       .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        if (errorCode === 'auth/email-already-in-use') {
+          Alert.alert('Email already in use, please provide another one');
+        }
         console.log('errorCode', errorCode);
         console.log('errorMessage', errorMessage);
         setLoader(false);

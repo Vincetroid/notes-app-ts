@@ -1,51 +1,68 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, SafeAreaView, TextInput, Button } from 'react-native';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
+import {
+  Text,
+  SafeAreaView,
+  TextInput,
+  Pressable,
+  ActivityIndicator,
+  Alert,
+} from 'react-native';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import styles from './SignInScreen.styles';
 
 const SignInScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loader, setLoader] = useState(false);
 
-  useEffect(() => {
-    // console.log(2);
-    // const email = 'vince_trance@hotmail.com';
-    // const password = '123456';
-    // const auth = getAuth();
-    // createUserWithEmailAndPassword(auth, email, password)
-    //   .then(userCredential => {
-    //     // Signed in
-    //     const user = userCredential.user;
-    //     console.group();
-    //     console.log('user', user);
-    //     console.groupEnd();
-    //     // ...
-    //   })
-    //   .catch(error => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     console.log('errorCode', errorCode);
-    //     console.log('errorMessage', errorMessage);
-    //     // ..
-    //   });
-  }, []);
+  const textInputColor = { color: loader ? 'grey' : 'black' };
+
+  const onSignInPress = () => {
+    setLoader(true);
+
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        // Signed in
+        const user = userCredential.user;
+        console.group();
+        console.log('user in sign in', user);
+        console.groupEnd();
+      })
+      .catch(error => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('errorCode in Sign In', errorCode);
+        console.log('errorMessage in Sign In', errorMessage);
+      });
+  };
 
   return (
     <SafeAreaView>
       <TextInput
-        style={styles.textInput}
-        onChangeText={setEmail}
         value={email}
+        editable={!loader}
+        style={[styles.textInput, textInputColor]}
+        onChangeText={setEmail}
         placeholder="Email"
+        placeholderTextColor="grey"
       />
       <TextInput
-        style={styles.textInput}
-        onChangeText={() => setPassword}
         secureTextEntry
         value={password}
+        editable={!loader}
+        style={[styles.textInput, textInputColor]}
+        onChangeText={setPassword}
         placeholder="Password"
+        placeholderTextColor="grey"
       />
-      <Button onPress={() => console.log('Registering')} title="Sign In" />
+      <Pressable onPress={onSignInPress} style={styles.signInBtn}>
+        {!loader ? (
+          <Text style={styles.signInBtnText}>SIGN IN</Text>
+        ) : (
+          <ActivityIndicator color="grey" />
+        )}
+      </Pressable>
     </SafeAreaView>
   );
 };
