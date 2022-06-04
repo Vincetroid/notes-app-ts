@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   },
   signInBtnText: {
     textAlign: 'center',
+    color: 'white',
   },
 });
 
