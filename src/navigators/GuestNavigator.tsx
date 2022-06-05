@@ -4,12 +4,13 @@ import SignInScreen from '../screens/SignInScreen/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen/SignUpScreen';
 import InitialScreen from '../screens/InitialScreen/InitialScreen';
 import Routes from '../utils/Routes';
+import commonNavigationOptions from '../utils/CommonNavigationOptions';
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={commonNavigationOptions}>
       <Stack.Screen
         name={Routes.Initial}
         component={InitialScreen}
