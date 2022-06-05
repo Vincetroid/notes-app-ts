@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import styles from './SignUpScreen.styles';
-import handleErrors from '../../utils/HandleErrors';
+import handleErrors from '../../utils/handleErrors';
 
 const SignUpScreen = () => {
   const [userName, setUserName] = useState('');
