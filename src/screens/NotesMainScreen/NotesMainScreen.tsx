@@ -13,8 +13,6 @@ type Note = {
 
 function NotesMainScreen({ navigation: { navigate } }) {
   const [notes, setNotes] = useState<Array<Note>>([]);
-  // console.log('notes');
-  // console.log(notes);
 
   useEffect(() => {
     init();
@@ -27,9 +25,14 @@ function NotesMainScreen({ navigation: { navigate } }) {
 
   // Get a list of cities from your database
   async function getNotes(db) {
-    const notesCol = collection(db, 'notes');
-    const noteSnapshot = await getDocs(notesCol);
-    const notesList = noteSnapshot.docs.map(doc => doc.data());
+    const notesCollection = collection(db, 'notes');
+    const notesSnapshotOfDocuments = await getDocs(notesCollection);
+    const notesList = notesSnapshotOfDocuments.docs.map(doc => {
+      const data = doc.data();
+      // TODO: Desctructure data to get timestamp values and convert them with https://firebase.google.com/docs/reference/node/firebase.firestore.Timestamp to show an readable Date
+      const docId = doc.id;
+      return { docId, ...data };
+    });
     return notesList as Array<Note>;
   }
 

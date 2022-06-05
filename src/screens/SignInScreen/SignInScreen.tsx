@@ -9,11 +9,13 @@ import {
 } from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import styles from './SignInScreen.styles';
-import handleErrors from '../../utils/HandleErrors';
+import handleErrors from '../../utils/handleErrors';
 
 const SignInScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('a@hotmail.com');
+  const [password, setPassword] = useState('asdfgh');
   const [loader, setLoader] = useState(false);
 
   const textInputColor = { color: loader ? 'grey' : 'black' };
