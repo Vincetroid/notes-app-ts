@@ -12,6 +12,7 @@ import {
   faNoteSticky,
   faCirclePlus,
   faTrash,
+  faChevronCircleLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
 LogBox.ignoreAllLogs();
@@ -21,7 +22,14 @@ export default function App() {
   const authUser = useFirebaseAuth(auth);
 
   React.useEffect(() => {
-    library.add(fab, faGear, faNoteSticky, faCirclePlus, faTrash);
+    library.add(
+      fab,
+      faGear,
+      faNoteSticky,
+      faCirclePlus,
+      faTrash,
+      faChevronCircleLeft,
+    );
   }, []);
 
   return (

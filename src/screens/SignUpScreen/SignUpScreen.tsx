@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import styles from './SignUpScreen.styles';
+import handleErrors from '../../utils/HandleErrors';
 
-const SignUpScreen = ({ navigation }) => {
+const SignUpScreen = () => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,27 +24,16 @@ const SignUpScreen = ({ navigation }) => {
 
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
-        // Signed in
-        const user = userCredential.user;
-        console.group();
-        console.log('user', user);
-        console.groupEnd();
+      .then(() => {
         setLoader(false);
         setUserName('');
         setEmail('');
         setPassword('');
-        Alert.alert('Registration Completed, please Sign in');
-        navigation.navigate('SignIn');
+        Alert.alert('Registration Completed');
       })
       .catch(error => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        if (errorCode === 'auth/email-already-in-use') {
-          Alert.alert('Email already in use, please provide another one');
-        }
-        console.log('errorCode', errorCode);
-        console.log('errorMessage', errorMessage);
+        handleErrors(errorCode);
         setLoader(false);
       });
   };

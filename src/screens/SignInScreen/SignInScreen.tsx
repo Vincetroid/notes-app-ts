@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import styles from './SignInScreen.styles';
+import handleErrors from '../../utils/HandleErrors';
 
 const SignInScreen = () => {
   const [email, setEmail] = useState('');
@@ -22,23 +23,21 @@ const SignInScreen = () => {
 
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
-        // Signed in
-        const user = userCredential.user;
-        console.group();
-        console.log('user in sign in', user);
-        console.groupEnd();
+      .then(() => {
+        setLoader(false);
+        setEmail('');
+        setPassword('');
+        Alert.alert('Successful login');
       })
       .catch(error => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('errorCode in Sign In', errorCode);
-        console.log('errorMessage in Sign In', errorMessage);
+        handleErrors(errorCode);
+        setLoader(false);
       });
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.body}>
       <TextInput
         value={email}
         editable={!loader}
