@@ -1,10 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  body: {
-    backgroundColor: '#417F96',
-    flex: 1,
-  },
   textInput: {
     backgroundColor: 'white',
     margin: 10,

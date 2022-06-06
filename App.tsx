@@ -13,6 +13,7 @@ import {
   faCirclePlus,
   faTrash,
   faChevronCircleLeft,
+  faPen,
 } from '@fortawesome/free-solid-svg-icons';
 
 LogBox.ignoreAllLogs();
@@ -29,6 +30,7 @@ export default function App() {
       faCirclePlus,
       faTrash,
       faChevronCircleLeft,
+      faPen,
     );
   }, []);
 

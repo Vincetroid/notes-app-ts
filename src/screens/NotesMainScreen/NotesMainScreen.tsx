@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView } from 'react-native';
 import { db } from '../../firebase/conf';
 import { collection, getDocs } from 'firebase/firestore';
 import NotesList from './NotesList/NotesList';
