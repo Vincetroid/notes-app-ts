@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import { db } from '../../../firebase/conf';
 import { doc, deleteDoc } from 'firebase/firestore';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { db } from '../../../firebase/conf';
 import handleErrors from '../../../utils/handleErrors';
-import styles from './NoteCard.styles';
 import LoadingModal from '../../../components/LoadingModal/LoadingModal';
 import StyleConstants from '../../../global-styles/StyleConstants';
+import styles from './NoteCard.styles';
 
 const NoteCard = ({ note }) => {
   const [loading, setLoading] = useState(false);
@@ -14,7 +14,6 @@ const NoteCard = ({ note }) => {
   const onDeleteNote = async () => {
     setLoading(true);
     try {
-      console.log('onDeleteNote');
       await deleteDoc(doc(db, 'notes', note.docId));
       setLoading(false);
     } catch (error) {

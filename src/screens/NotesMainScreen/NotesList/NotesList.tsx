@@ -1,9 +1,8 @@
 import React from 'react';
 import { SafeAreaView, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import NoteCard from '../NoteCard/NoteCard';
-import styles from './NotesList.styles';
 import GlobalStyles from '../../../global-styles/GlobalStyles';
+import styles from './NotesList.styles';
 
 type Note = {
   title: string;
@@ -12,8 +11,6 @@ type Note = {
 };
 
 const NotesList = ({ notes }: Array<Note>): JSX.Element => {
-  const navigation = useNavigation();
-
   return (
     <SafeAreaView style={GlobalStyles.bodyScreenContainer}>
       <ScrollView>
