@@ -5,6 +5,7 @@ const StyleConstants = Object.freeze({
   putty: '#E3DE84',
   solidPink: '#96394D',
   deepGray: '#1D1D1D',
+  gray: '#444',
 });
 
 export default StyleConstants;

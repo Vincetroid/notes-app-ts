@@ -10,6 +10,7 @@ import {
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import styles from './SignInScreen.styles';
 import handleErrors from '../../utils/handleErrors';
+import GlobalStyles from '../../global-styles/GlobalStyles';
 
 const SignInScreen = () => {
   // const [email, setEmail] = useState('');
@@ -39,7 +40,7 @@ const SignInScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.body}>
+    <SafeAreaView style={GlobalStyles.bodyScreenContainer}>
       <TextInput
         value={email}
         editable={!loader}

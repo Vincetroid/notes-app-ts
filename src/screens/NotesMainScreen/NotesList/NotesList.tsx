@@ -1,7 +1,7 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView, ScrollView } from 'react-native';
 import NoteCard from '../NoteCard/NoteCard';
+import GlobalStyles from '../../../global-styles/GlobalStyles';
 import styles from './NotesList.styles';
 
 type Note = {
@@ -11,14 +11,14 @@ type Note = {
 };
 
 const NotesList = ({ notes }: Array<Note>): JSX.Element => {
-  const navigation = useNavigation();
-
   return (
-    <ScrollView>
-      {notes.map((note: Note, i: number) => (
-        <NoteCard note={note} key={i} />
-      ))}
-    </ScrollView>
+    <SafeAreaView style={GlobalStyles.bodyScreenContainer}>
+      <ScrollView>
+        {notes.map((note: Note, i: number) => (
+          <NoteCard note={note} key={i} />
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import StyleConstants from '../../../global-styles/StyleConstants';
 
 const styles = StyleSheet.create({
   cardWrapper: {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     border: 1,
     borderRadius: 5,
-    backgroundColor: 'aquamarine',
+    backgroundColor: StyleConstants.pictonBlue,
   },
   titleWrapper: {},
   noteTitle: {
@@ -23,6 +24,16 @@ const styles = StyleSheet.create({
   noteDesc: {
     color: '#1d1d1d',
     textAlign: 'justify',
+  },
+  iconsZone: {
+    marginTop: 0,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  iconBtn: {
+    padding: 4,
+    marginLeft: 10,
   },
 });
 
