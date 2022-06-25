@@ -4,8 +4,7 @@ import StyleConstants from '../../../global-styles/StyleConstants';
 const styles = StyleSheet.create({
   cardWrapper: {
     flex: 1,
-    margin: 16,
-    marginBottom: 0,
+    marginBottom: 14,
     paddingTop: 10,
     paddingBottom: 10,
     paddingRight: 16,

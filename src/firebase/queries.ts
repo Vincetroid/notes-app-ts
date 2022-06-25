@@ -1,5 +1,5 @@
 import { db } from './conf';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 import Note from '../types/Note';
 
 const getNotes = async () => {
@@ -14,4 +14,15 @@ const getNotes = async () => {
   return notesList as Array<Note>;
 };
 
-export { getNotes };
+const setNote = async () => {
+  // Add a new document with a generated id.
+  const docRef = await addDoc(collection(db, 'notes'), {
+    title: 'Titulo de prueba',
+    description:
+      "Descripción de prueba, lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
+    create_timestamp: 523453245423,
+  });
+  console.log('Document written with ID: ', docRef.id);
+};
+
+export { setNote, getNotes };

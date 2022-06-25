@@ -6,6 +6,8 @@ const StyleConstants = Object.freeze({
   solidPink: '#96394D',
   deepGray: '#1D1D1D',
   gray: '#444',
+  aqua: 'aqua',
+  labelFontSize: 19,
 });
 
 export default StyleConstants;

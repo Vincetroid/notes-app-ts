@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Pressable, Text, View } from 'react-native';
-import { db } from '../../../firebase/conf';
-import { doc, deleteDoc } from 'firebase/firestore';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import handleErrors from '../../../utils/handleErrors';
 import LoadingModal from '../../../components/LoadingModal/LoadingModal';
 import StyleConstants from '../../../global-styles/StyleConstants';
 import styles from './NoteCard.styles';
+import { Pressable, Text, View } from 'react-native';
+import { db } from '../../../firebase/conf';
+import { doc, deleteDoc } from 'firebase/firestore';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 const NoteCard = ({ note }) => {
   const [loading, setLoading] = useState(false);
 
   const onDeleteNote = async () => {
-    setLoading(true);
     try {
       await deleteDoc(doc(db, 'notes', note.docId));
       setLoading(false);
@@ -36,7 +35,13 @@ const NoteCard = ({ note }) => {
           <Pressable onPress={onDeleteNote} style={styles.iconBtn}>
             <FontAwesomeIcon icon="pen" size={20} color={'aqua'} />
           </Pressable>
-          <Pressable onPress={onDeleteNote} style={styles.iconBtn}>
+          <Pressable
+            onPress={() => {
+              setLoading(true);
+              onDeleteNote();
+            }}
+            style={styles.iconBtn}
+          >
             <FontAwesomeIcon
               icon="trash"
               size={20}
