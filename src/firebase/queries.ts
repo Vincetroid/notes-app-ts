@@ -15,13 +15,15 @@ const getNotes = async () => {
   return notesList as Array<Note>;
 };
 
-const setNote = async () => {
-  const { title, description, create_timestamp } = await createRandomNote();
+const setNote = async (title: string, description: string) => {
+  // To create random notes
+  // const { title, description, create_timestamp } = await createRandomNote();
 
+  // To create notes from form
   await addDoc(collection(db, 'notes'), {
     title,
     description,
-    create_timestamp,
+    create_timestamp: new Date(),
   });
 };
 

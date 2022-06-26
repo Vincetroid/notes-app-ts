@@ -23,7 +23,7 @@ const CreateNoteModal = () => {
   const textInputColor = { color: loader ? 'grey' : 'black' };
 
   const createNote = async () => {
-    await setNote();
+    await setNote(title, description);
   };
 
   return (
