@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native';
+import StyleConstants from './StyleConstants';
 
 const GlobalStyles = StyleSheet.create({
   // TODO: Check
   bodyScreenContainer: {
-    backgroundColor: '#417F96',
+    backgroundColor: StyleConstants.wedgeWood,
     flex: 1,
+    padding: 16,
   },
 });
 

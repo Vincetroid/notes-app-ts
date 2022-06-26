@@ -1,20 +1,11 @@
 import React from 'react';
-import { LogBox } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import TabBottomNavigator from './src/navigators/TabBottomNavigator';
 import GuestNavigator from './src/navigators/GuestNavigator';
-import { getAuth } from 'firebase/auth';
 import useFirebaseAuth from './src/hooks/useFirebaseAuth';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import {
-  faGear,
-  faNoteSticky,
-  faCirclePlus,
-  faTrash,
-  faChevronCircleLeft,
-  faPen,
-} from '@fortawesome/free-solid-svg-icons';
+import addFontAwesomeIcons from './src/assets/icons/FontAwesomeIconsHandler';
+import { LogBox } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { getAuth } from 'firebase/auth';
 
 LogBox.ignoreAllLogs();
 
@@ -23,15 +14,7 @@ export default function App() {
   const authUser = useFirebaseAuth(auth);
 
   React.useEffect(() => {
-    library.add(
-      fab,
-      faGear,
-      faNoteSticky,
-      faCirclePlus,
-      faTrash,
-      faChevronCircleLeft,
-      faPen,
-    );
+    addFontAwesomeIcons();
   }, []);
 
   return (

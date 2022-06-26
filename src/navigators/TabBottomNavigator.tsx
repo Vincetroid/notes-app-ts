@@ -1,26 +1,48 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import CreateNoteScreen from '../screens/CreateNoteScreen/CreateNoteScreen';
 import NotesMainScreen from '../screens/NotesMainScreen/NotesMainScreen';
 import SettingsScreen from '../screens/SettingsScreen/SettingsScreen';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import CommonNavigationOptions from '../utils/CommonNavigationOptions';
+import NotesNavigationOptions from '../screens/NotesMainScreen/NavigationOptions';
+import Routes from '../utils/Routes';
 
 const Tab = createBottomTabNavigator();
+const NotesStack = createStackNavigator();
+
+function NotesStackNavigator() {
+  return (
+    <NotesStack.Navigator screenOptions={CommonNavigationOptions}>
+      <NotesStack.Screen
+        name={Routes.Notes}
+        component={NotesMainScreen}
+        options={NotesNavigationOptions}
+      />
+      <NotesStack.Screen
+        name={Routes.CreateNote}
+        component={CreateNoteScreen}
+        options={{ title: 'Create Note' }}
+      />
+    </NotesStack.Navigator>
+  );
+}
 
 function TabBottomNavigator() {
   return (
+    // TODO: screenOptions={CommonNavigationOptions} only works for Settings, create Settings stack to remove screenOptions from here
     <Tab.Navigator screenOptions={CommonNavigationOptions}>
       <Tab.Screen
-        name="Home"
-        component={NotesMainScreen}
+        name={Routes.NotesRoot}
+        component={NotesStackNavigator}
         options={{
-          title: 'Notes',
+          headerShown: false,
           tabBarIcon: () => <FontAwesomeIcon icon="note-sticky" size={24} />,
-          headerLeft: () => null,
         }}
       />
       <Tab.Screen
-        name="Settings"
+        name={Routes.Settings}
         component={SettingsScreen}
         options={{
           title: 'Settings',

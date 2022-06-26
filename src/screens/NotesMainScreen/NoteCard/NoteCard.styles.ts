@@ -4,26 +4,35 @@ import StyleConstants from '../../../global-styles/StyleConstants';
 const styles = StyleSheet.create({
   cardWrapper: {
     flex: 1,
-    margin: 16,
-    marginBottom: 0,
+    marginBottom: 14,
     paddingTop: 10,
     paddingBottom: 10,
     paddingRight: 16,
     paddingLeft: 16,
-    border: 1,
+    borderWidth: 1,
     borderRadius: 5,
     backgroundColor: StyleConstants.pictonBlue,
   },
   titleWrapper: {},
   noteTitle: {
-    color: 'black',
+    color: StyleConstants.deepGray,
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 6,
   },
   noteDesc: {
-    color: '#1d1d1d',
+    color: StyleConstants.deepGray,
     textAlign: 'justify',
+  },
+  noteCreationDateLabel: {
+    color: StyleConstants.deepGray,
+    marginVertical: 10,
+    fontWeight: 'bold',
+  },
+  noteCreationDate: {
+    color: StyleConstants.deepGray,
+    marginVertical: 10,
+    fontWeight: 'normal',
   },
   iconsZone: {
     marginTop: 0,

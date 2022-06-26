@@ -1,6 +1,7 @@
 import { db } from './conf';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, addDoc, Timestamp } from 'firebase/firestore';
 import Note from '../types/Note';
+import { createRandomNote } from '../utils/Faker';
 
 const getNotes = async () => {
   const notesCollection = collection(db, 'notes');
@@ -14,4 +15,16 @@ const getNotes = async () => {
   return notesList as Array<Note>;
 };
 
-export { getNotes };
+const setNote = async (title: string, description: string) => {
+  // To create random notes
+  // const { title, description, create_timestamp } = await createRandomNote();
+
+  // To create notes from form
+  await addDoc(collection(db, 'notes'), {
+    title,
+    description,
+    create_timestamp: new Date(),
+  });
+};
+
+export { setNote, getNotes };
