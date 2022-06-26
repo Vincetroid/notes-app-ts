@@ -4,7 +4,7 @@ import StyleConstants from '../../global-styles/StyleConstants';
 const styles = StyleSheet.create({
   textInput: {
     borderRadius: 5,
-    border: 1,
+    borderWidth: 1,
     marginBottom: 20,
     backgroundColor: StyleConstants.aqua,
     paddingVertical: 10,

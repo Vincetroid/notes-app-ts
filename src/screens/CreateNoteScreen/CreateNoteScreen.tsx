@@ -53,12 +53,7 @@ const CreateNoteModal = () => {
           multiline={true}
           numberOfLines={10}
         />
-        <TouchableOpacity
-          onPress={() => {
-            createNote();
-          }}
-          style={styles.createNoteBtn}
-        >
+        <TouchableOpacity onPress={createNote} style={styles.createNoteBtn}>
           {!loader ? (
             <Text style={styles.createNoteBtnText}>CREATE NOTE</Text>
           ) : (

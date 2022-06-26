@@ -14,9 +14,10 @@ function NotesMainScreen({ navigation: { navigate } }) {
     };
   }, []);
 
-  useEffect(() => {
-    init();
-  }, [notes]);
+  // It creates an infinite loop, make it in another way
+  // useEffect(() => {
+  //   init();
+  // }, [notes]);
 
   const init = async () => {
     const notesResult = await getNotes();

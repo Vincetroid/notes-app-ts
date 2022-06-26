@@ -5,11 +5,17 @@ import StyleConstants from '../../../global-styles/StyleConstants';
 import styles from './NoteCard.styles';
 import { Pressable, Text, View } from 'react-native';
 import { db } from '../../../firebase/conf';
-import { doc, deleteDoc } from 'firebase/firestore';
+import { doc, deleteDoc, Timestamp } from 'firebase/firestore';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { format } from 'date-fns';
 
 const NoteCard = ({ note }) => {
   const [loading, setLoading] = useState(false);
+
+  const { seconds, nanoseconds } = note.create_timestamp;
+  const timestamp = new Timestamp(seconds, nanoseconds);
+  const timestampDate = timestamp.toDate();
+  const noteCreationDateTime = format(timestampDate, 'dd/MM/yyyy');
 
   const onDeleteNote = async () => {
     try {
@@ -30,6 +36,12 @@ const NoteCard = ({ note }) => {
         </View>
         <View>
           <Text style={styles.noteDesc}>{note.description}</Text>
+        </View>
+        <View>
+          <Text style={styles.noteCreationDateLabel}>
+            Date Creation:{' '}
+            <Text style={styles.noteCreationDate}>{noteCreationDateTime}</Text>
+          </Text>
         </View>
         <View style={styles.iconsZone}>
           <Pressable onPress={onDeleteNote} style={styles.iconBtn}>

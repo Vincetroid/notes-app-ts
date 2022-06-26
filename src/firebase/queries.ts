@@ -1,6 +1,7 @@
 import { db } from './conf';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, Timestamp } from 'firebase/firestore';
 import Note from '../types/Note';
+import { createRandomNote } from '../utils/Faker';
 
 const getNotes = async () => {
   const notesCollection = collection(db, 'notes');
@@ -15,14 +16,13 @@ const getNotes = async () => {
 };
 
 const setNote = async () => {
-  // Add a new document with a generated id.
-  const docRef = await addDoc(collection(db, 'notes'), {
-    title: 'Titulo de prueba',
-    description:
-      "Descripción de prueba, lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-    create_timestamp: 523453245423,
+  const { title, description, create_timestamp } = await createRandomNote();
+
+  await addDoc(collection(db, 'notes'), {
+    title,
+    description,
+    create_timestamp,
   });
-  console.log('Document written with ID: ', docRef.id);
 };
 
 export { setNote, getNotes };
