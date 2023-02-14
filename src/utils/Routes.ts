@@ -8,7 +8,7 @@ interface RoutesInterface {
   SignIn: string;
 }
 
-const Routes: RoutesInterface = Object.freeze({
+const Routes: RoutesInterface = {
   CreateNote: 'CreateNote',
   Notes: 'Notes',
   NotesRoot: 'NotesRoot',
@@ -16,6 +16,6 @@ const Routes: RoutesInterface = Object.freeze({
   Settings: 'Settings',
   SignUp: 'SignUp',
   SignIn: 'SignIn',
-});
+};
 
 export default Routes;

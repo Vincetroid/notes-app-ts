@@ -8,20 +8,30 @@ import SettingsScreen from '../screens/SettingsScreen/SettingsScreen';
 import CommonNavigationOptions from '../utils/CommonNavigationOptions';
 import NotesNavigationOptions from '../screens/NotesMainScreen/NavigationOptions';
 import Routes from '../utils/Routes';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+export type NotesStackParamList = {
+  Notes: undefined;
+  CreateNote: undefined;
+};
+
+export type NavigationProps = NativeStackNavigationProp<NotesStackParamList>;
 
 const Tab = createBottomTabNavigator();
-const NotesStack = createStackNavigator();
+const NotesStack = createStackNavigator<NotesStackParamList>();
 
 function NotesStackNavigator() {
   return (
     <NotesStack.Navigator screenOptions={CommonNavigationOptions}>
       <NotesStack.Screen
-        name={Routes.Notes}
+        // name={Routes.Notes}
+        name={'Notes'}
         component={NotesMainScreen}
         options={NotesNavigationOptions}
       />
       <NotesStack.Screen
-        name={Routes.CreateNote}
+        // name={Routes.CreateNote}
+        name={'CreateNote'}
         component={CreateNoteScreen}
         options={{ title: 'Create Note' }}
       />
@@ -35,6 +45,7 @@ function TabBottomNavigator() {
     <Tab.Navigator screenOptions={CommonNavigationOptions}>
       <Tab.Screen
         name={Routes.NotesRoot}
+        // name={'NotesRoot'}
         component={NotesStackNavigator}
         options={{
           headerShown: false,
