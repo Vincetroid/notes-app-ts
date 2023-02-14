@@ -15,9 +15,14 @@ export type NotesStackParamList = {
   CreateNote: undefined;
 };
 
+export type TabBottomParamList = {
+  NotesRoot: undefined;
+  Settings: undefined;
+};
+
 export type NavigationProps = NativeStackNavigationProp<NotesStackParamList>;
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<TabBottomParamList>();
 const NotesStack = createStackNavigator<NotesStackParamList>();
 
 function NotesStackNavigator() {

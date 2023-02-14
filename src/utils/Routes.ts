@@ -8,22 +8,22 @@
 //   SignIn: string;
 // }
 
-// export const Routes = {
-//   CreateNote: 'CreateNote',
-//   Notes: 'Notes',
-//   NotesRoot: 'NotesRoot',
-//   Initial: 'Initial',
-//   Settings: 'Settings',
-//   SignUp: 'SignUp',
-//   SignIn: 'SignIn',
-// } as const;
+export const Routes = {
+  CreateNote: 'CreateNote',
+  Notes: 'Notes',
+  NotesRoot: 'NotesRoot',
+  Initial: 'Initial',
+  Settings: 'Settings',
+  SignUp: 'SignUp',
+  SignIn: 'SignIn',
+} as const;
 
-export const enum Routes {
-  CreateNote = 'CreateNote',
-  Notes = 'Notes',
-  NotesRoot = 'NotesRoot',
-  Initial = 'Initial',
-  Settings = 'Settings',
-  SignUp = 'SignUp',
-  SignIn = 'SignIn',
-}
+// export const enum Routes {
+//   CreateNote = 'CreateNote',
+//   Notes = 'Notes',
+//   NotesRoot = 'NotesRoot',
+//   Initial = 'Initial',
+//   Settings = 'Settings',
+//   SignUp = 'SignUp',
+//   SignIn = 'SignIn',
+// }

@@ -5,10 +5,20 @@ import SignUpScreen from '../screens/SignUpScreen/SignUpScreen';
 import InitialScreen from '../screens/InitialScreen/InitialScreen';
 import { Routes } from '../utils/Routes';
 import CommonNavigationOptions from '../utils/CommonNavigationOptions';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
+export type GuestStackParamList = {
+  Initial: undefined;
+  SignIn: undefined;
+  SignUp: undefined;
+};
 
-function MyStack() {
+export type GuestNavigationProps =
+  NativeStackNavigationProp<GuestStackParamList>;
+
+const Stack = createStackNavigator<GuestStackParamList>();
+
+function GuestStack() {
   return (
     <Stack.Navigator screenOptions={CommonNavigationOptions}>
       <Stack.Screen
@@ -30,4 +40,4 @@ function MyStack() {
   );
 }
 
-export default MyStack;
+export default GuestStack;
