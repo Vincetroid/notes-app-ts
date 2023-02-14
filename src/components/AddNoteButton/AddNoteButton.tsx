@@ -1,5 +1,5 @@
 import React from 'react';
-import Routes from '../../utils/Routes';
+import { Routes } from '../../utils/Routes';
 import StyleConstants from '../../global-styles/StyleConstants';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -14,7 +14,6 @@ const AddNoteButton = () => {
     <TouchableOpacity
       style={styles.btn}
       onPress={() => navigation.navigate(Routes.CreateNote)}
-      // onPress={() => navigation.navigate('CreateNote')}
     >
       <FontAwesomeIcon icon="plus" size={32} style={styles.icon} />
     </TouchableOpacity>
