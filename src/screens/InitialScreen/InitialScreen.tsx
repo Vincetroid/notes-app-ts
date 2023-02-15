@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Button } from 'react-native';
-import Routes from '../../utils/Routes';
+import { Routes } from '../../utils/Routes';
 
 function HomeScreen({ navigation: { navigate } }) {
   return (
