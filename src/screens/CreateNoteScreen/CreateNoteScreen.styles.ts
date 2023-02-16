@@ -16,11 +16,6 @@ const styles = StyleSheet.create({
     color: StyleConstants.deepGray,
     fontWeight: 'bold',
   },
-  noteFieldsContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
   createNoteBtn: {
     margin: 10,
     padding: 16,

@@ -28,7 +28,7 @@ const CreateNoteModal = () => {
 
   return (
     <SafeAreaView style={GlobalStyles.bodyScreenContainer}>
-      <View style={styles.noteFieldsContainer}>
+      <ScrollView>
         <Text style={styles.label}>Title</Text>
         <TextInput
           value={title}
@@ -60,7 +60,7 @@ const CreateNoteModal = () => {
             <ActivityIndicator color="grey" />
           )}
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
