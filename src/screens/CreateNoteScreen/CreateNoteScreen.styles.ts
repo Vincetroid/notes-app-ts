@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   createNoteBtn: {
     margin: 10,
     padding: 16,
-    backgroundColor: StyleConstants.solidPink,
     borderRadius: 5,
   },
   createNoteBtnText: {

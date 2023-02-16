@@ -1,19 +1,11 @@
 import React, { useState } from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  Pressable,
-  View,
-  ScrollView,
-  TextInput,
-  ActivityIndicator,
-} from 'react-native';
+import { Text, ScrollView, TextInput, ActivityIndicator } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { setNote } from '../../firebase/queries';
 import GlobalStyles from '../../global-styles/GlobalStyles';
 import styles from './CreateNoteScreen.styles';
+import StyleConstants from '../../global-styles/StyleConstants';
 
 const CreateNoteModal = () => {
   const [loader, setLoader] = useState(false);
@@ -21,9 +13,20 @@ const CreateNoteModal = () => {
   const [description, setDescription] = useState('');
 
   const textInputColor = { color: loader ? 'grey' : 'black' };
+  const createNoteBgColor = {
+    backgroundColor: loader
+      ? StyleConstants.solidPinkLoading
+      : StyleConstants.solidPink,
+  };
 
   const createNote = async () => {
-    await setNote(title, description);
+    try {
+      setLoader(true);
+      await setNote(title, description);
+      setLoader(false);
+    } catch (error) {
+      setLoader(false);
+    }
   };
 
   return (
@@ -53,7 +56,11 @@ const CreateNoteModal = () => {
           multiline={true}
           numberOfLines={10}
         />
-        <TouchableOpacity onPress={createNote} style={styles.createNoteBtn}>
+        <TouchableOpacity
+          onPress={createNote}
+          style={[styles.createNoteBtn, createNoteBgColor]}
+          disabled={loader}
+        >
           {!loader ? (
             <Text style={styles.createNoteBtnText}>CREATE NOTE</Text>
           ) : (
