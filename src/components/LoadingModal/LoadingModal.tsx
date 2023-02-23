@@ -6,16 +6,18 @@ import styles from './LoadingModal.styles';
 
 interface ModalProps {
   loading: boolean;
-  loadingMessage: string;
+  loadingMessage?: string;
+  size?: number | 'small' | 'large' | undefined;
 }
 
 const LoadingModal = ({
   loading = false,
   loadingMessage = 'Loading...',
+  size = 'small',
 }: ModalProps) => {
   return (
     <Modal isVisible={loading} style={styles.modal}>
-      <ActivityIndicator size="small" color={StyleConstants.putty} />
+      <ActivityIndicator size={size} color={StyleConstants.putty} />
       <Text style={styles.modalText}>{loadingMessage}</Text>
     </Modal>
   );
