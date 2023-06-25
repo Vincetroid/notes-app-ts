@@ -1,0 +1,7 @@
+On Mac - Android Emulator
+
+Using NVM, you have to use v16.20.0 by running and switching everytime on two terminals with exactly:
+
+nvm use 16
+
+Before running nsrc and rnoid on each terminal
